@@ -32,6 +32,19 @@ app.get("/", (req, res) => {
     })
 })
 
+app.post('/create', (req, res) => {
+    const sql = "INSERT INTO books (`title`, `author`, `yearReleased`) VALUES (?)";
+    const values = [
+        req.body.title,
+        req.body.author,
+        req.body.date
+    ]
+    database.query(sql, [values], (err, data) => {
+        if(err) return res.json("Error");
+        return res.json(data);
+    })
+})
+
 app.listen(8081, () => {
     console.log ('Server is running on port 8081 at http://localhost:8081')
 })
