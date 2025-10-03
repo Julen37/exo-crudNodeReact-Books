@@ -12,6 +12,15 @@ function Books() {
         .catch(err => console.log(err));
     }, []);
 
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete ('http://localhost:8081/book/'+id)
+            window.location.reload()
+        } catch(err) {
+            console.log(err);
+        }
+    };
+
   return (
     <div className='d-flex vh-100 bg-dark justify-content-center align-items-center'>
         <div className='w-80 bg-danger rounded p-3'>
@@ -33,8 +42,8 @@ function Books() {
                                 <td>{data.author}</td>
                                 <td>{data.yearReleased}</td>
                                 <td>
-                                    <Link to={`update/${data.id}`}className='btn btn-light'>Edit</Link>
-                                    <button className='btn btn-secondary ms-2'>Delete</button>
+                                    <Link to={`update/${data.id}`} className='btn btn-light'>Edit</Link>
+                                    <button onClick={ e => handleDelete(data.id)} className='btn btn-secondary ms-2'>Delete</button>
                                 </td>
                             </tr>
                         ))

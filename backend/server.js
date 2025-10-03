@@ -59,6 +59,16 @@ app.put('/update/:id', (req, res) => {
     })
 })
 
+app.delete('/book/:id', (req, res) => {
+    const sql = "DELETE FROM books WHERE id = ?";
+    const id = req.params.id
+
+    database.query(sql, [id], (err, data) => {
+        if(err) return res.json("Error");
+        return res.json(data);
+    })
+})
+
 app.listen(8081, () => {
     console.log ('Server is running on port 8081 at http://localhost:8081')
 })
