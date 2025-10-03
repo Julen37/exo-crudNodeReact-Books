@@ -33,7 +33,7 @@ function Books() {
                                 <td>{data.author}</td>
                                 <td>{data.yearReleased}</td>
                                 <td>
-                                    <button className='btn btn-light'>Edit</button>
+                                    <Link to={`update/${data.id}`}className='btn btn-light'>Edit</Link>
                                     <button className='btn btn-secondary ms-2'>Delete</button>
                                 </td>
                             </tr>

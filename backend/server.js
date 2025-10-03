@@ -45,6 +45,20 @@ app.post('/create', (req, res) => {
     })
 })
 
+app.put('/update/:id', (req, res) => {
+    const sql = "UPDATE books SET `title` = ?, `author`= ?, `yearReleased` = ? WHERE id = ?";
+    const values = [
+        req.body.title,
+        req.body.author,
+        req.body.date
+    ]
+    const id = req.params.id
+    database.query(sql, [...values, id], (err, data) => {
+        if(err) return res.json("Error");
+        return res.json(data);
+    })
+})
+
 app.listen(8081, () => {
     console.log ('Server is running on port 8081 at http://localhost:8081')
 })
