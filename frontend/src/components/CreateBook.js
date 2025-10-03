@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function CreateBook() {
 
@@ -8,7 +8,7 @@ function CreateBook() {
     const [author, setAuthor] = useState('');
     const [date, setDate] = useState('');
 
-    const navigate =useNavigate();
+    const navigate = useNavigate();
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -38,6 +38,7 @@ function CreateBook() {
                 </div>
                 <button className='btn btn-dark'>Submit</button>
             </form>
+            <Link to="/" className='btn btn-dark mt-2'>Return</Link>
         </div>
     </div>
   )

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 function UpdateBook() {
 
@@ -41,6 +41,7 @@ function UpdateBook() {
                 </div>
                 <button className='btn btn-dark'>Submit</button>
             </form>
+            <Link to="/" className='btn btn-secondary mt-2'>Return</Link>
         </div>
     </div>
   )
